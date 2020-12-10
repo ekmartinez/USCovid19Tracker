@@ -42,8 +42,6 @@ class Ui_MainWindow(object):
         self.stateComboBox = QtWidgets.QComboBox(self.selectStateGroupBox)
         self.stateComboBox.setGeometry(QtCore.QRect(10, 30, 101, 31))
         self.stateComboBox.setObjectName("stateComboBox")
-        
-        
         self.selectDataGroupBox = QtWidgets.QGroupBox(self.centralwidget)
         self.selectDataGroupBox.setGeometry(QtCore.QRect(270, 60, 120, 71))
         font = QtGui.QFont()
@@ -59,8 +57,6 @@ class Ui_MainWindow(object):
         self.selectDataComboBox.setObjectName("selectDataComboBox")
         self.dataList = ['', 'Daily Cases', 'Daily Deaths', 'Total Cases', 'Total Deaths']
         self.selectDataComboBox.addItems(self.dataList) 
-        
-        
         self.line = QtWidgets.QFrame(self.centralwidget)
         self.line.setGeometry(QtCore.QRect(10, 40, 1151, 16))
         self.line.setFrameShape(QtWidgets.QFrame.HLine)
@@ -76,7 +72,6 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.getDataGroupBox.setFont(font)
         self.getDataGroupBox.setObjectName("getDataGroupBox")
-
         self.getDataButton = QtWidgets.QPushButton(self.getDataGroupBox)
         self.getDataButton.setGeometry(QtCore.QRect(10, 30, 101, 31))
         font = QtGui.QFont()
@@ -88,7 +83,6 @@ class Ui_MainWindow(object):
         self.getDataButton.setFont(font)
         self.getDataButton.setObjectName("getDataButton")
         self.getDataButton.clicked.connect(self.getData)
-
         self.analyzeDataGroupBox = QtWidgets.QGroupBox(self.centralwidget)
         self.analyzeDataGroupBox.setGeometry(QtCore.QRect(400, 60, 120, 71))
         font = QtGui.QFont()
@@ -99,7 +93,6 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.analyzeDataGroupBox.setFont(font)
         self.analyzeDataGroupBox.setObjectName("analyzeDataGroupBox")
-
         self.analyzeDataButton = QtWidgets.QPushButton(self.analyzeDataGroupBox)
         self.analyzeDataButton.setGeometry(QtCore.QRect(10, 30, 101, 31))
         font = QtGui.QFont()
@@ -111,7 +104,6 @@ class Ui_MainWindow(object):
         self.analyzeDataButton.setFont(font)
         self.analyzeDataButton.setObjectName("analyzeDataButton")
         self.analyzeDataButton.clicked.connect(self.displayData)
-        
         self.rightChartGroupBox = QtWidgets.QGroupBox(self.centralwidget)
         self.rightChartGroupBox.setGeometry(QtCore.QRect(540, 70, 621, 481))
         self.rightChartGroupBox.setTitle("")
@@ -121,7 +113,6 @@ class Ui_MainWindow(object):
         self.rightChartLabel.setText("")
         self.rightChartLabel.setObjectName("rightChartLabel")
         MainWindow.setCentralWidget(self.centralwidget)
-
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 1173, 26))
         font = QtGui.QFont()
@@ -137,15 +128,12 @@ class Ui_MainWindow(object):
         self.menuFile.setObjectName("menuFile")
         self.menuAbout = QtWidgets.QMenu(self.menubar)
         self.menuAbout.setObjectName("menuAbout")
-
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
-
         self.actionExit = QtWidgets.QAction(MainWindow)
         self.actionExit.setObjectName("actionExit")
-
         self.actionReadMe = QtWidgets.QAction(MainWindow)
         font = QtGui.QFont()
         font.setFamily("Arial Narrow")
@@ -157,7 +145,6 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuAbout.menuAction())
         self.actionExit.triggered.connect(self.close)
         self.actionReadMe.triggered.connect(self.readMe)
-
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
@@ -236,9 +223,8 @@ class Ui_MainWindow(object):
     def mainPlotter(self, x, y):
         path = f'{os.path.dirname(__file__)}/mainChart.png'
         fig, ax = plt.subplots(figsize=(6.5, 5.3))
-        #ax.set_title('Title')
         ax.bar(y, x)
-        #dates max
+        #TODO:SET MAX DATE TICKS
         ax.xaxis.set_major_locator(mpl.dates.MonthLocator())
         ax.xaxis.set_major_formatter(mpl.dates.DateFormatter('%m-%y'))
         plt.savefig(path)      
@@ -256,12 +242,11 @@ class Ui_MainWindow(object):
     def readMe(self):
         msg = fill('This application will let you track, analyze and visualize Covid-19 data in your state.  \
             To use it just download the historical data CSV file available at https://data.cdc.go, then follow \
-                the steps described to view the desired data or state.',52)
+                the steps described to view the desired information.',52)
                 
         msgBox = QtWidgets.QMessageBox.information(None, 'Read Me', msg, QtWidgets.QMessageBox.Ok)
 
 if __name__ == "__main__":
-    import sys
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
