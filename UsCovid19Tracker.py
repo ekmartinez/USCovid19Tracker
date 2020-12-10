@@ -229,9 +229,7 @@ class Ui_MainWindow(object):
         ax.xaxis.set_major_formatter(mpl.dates.DateFormatter('%m-%y'))
         plt.savefig(path)      
         imgChart = QtGui.QPixmap(path)
-    
         self.rightChartLabel.setPixmap(imgChart)
-        
 
     def warningMsg(self, msg):
         msgBox = QtWidgets.QMessageBox.warning(None, 'WARNING', msg, QtWidgets.QMessageBox.Ok)
@@ -243,7 +241,6 @@ class Ui_MainWindow(object):
         msg = fill('This application will let you track, analyze and visualize Covid-19 data in your state.  \
             To use it just download the historical data CSV file available at https://data.cdc.go, then follow \
                 the steps described to view the desired information.',52)
-                
         msgBox = QtWidgets.QMessageBox.information(None, 'Read Me', msg, QtWidgets.QMessageBox.Ok)
 
 if __name__ == "__main__":
