@@ -155,7 +155,7 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "U.S Covid-19 Tracker"))
         self.nameLabel.setText(_translate("MainWindow", "U.S Covid-19 Tracker"))
         self.selectStateGroupBox.setTitle(_translate("MainWindow", "2 - Select State"))
-        self.selectDataGroupBox.setTitle(_translate("MainWindow", "3 - Select Data"))
+        self.selectDataGroupBox.setTitle(_translate("MainWindow", "3 - Select Criteria"))
         self.getDataGroupBox.setTitle(_translate("MainWindow", "1 - Get Data"))
         self.getDataButton.setText(_translate("MainWindow", "Load"))
         self.analyzeDataGroupBox.setTitle(_translate("MainWindow", "4 - Analyze Data"))
